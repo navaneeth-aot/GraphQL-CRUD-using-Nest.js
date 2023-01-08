@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type studentEntity {
+  Id: Int!
+  firstName: String!
+  secondName: String!
+  physics: Int!
+  maths: Int!
+  ownerId: Int!
+  owner: Owner!
+}
+
+type Owner {
+  Id: Int!
+  Name: String!
+  student: [studentEntity!]!
+}
+
+type Query {
+  students: [studentEntity!]!
+  studentById(id: Int!): studentEntity!
+  owner: [Owner!]!
+  ownerByID(id: Int!): Owner!
+}
+
+type Mutation {
+  createStudent(Input: Input!): studentEntity!
+  updateStudent(id: Float!, input: updateStudent!): studentEntity!
+  deleteStudent(id: Float!): studentEntity!
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  updateOwner(updateOwnerInput: UpdateOwnerInput!): Owner!
+  removeOwner(id: Int!): Owner!
+}
+
+input Input {
+  firstName: String!
+  secondName: String!
+  physics: Int!
+  maths: Int!
+  ownerId: Int!
+}
+
+input updateStudent {
+  firstName: String
+  secondName: String
+  physics: Int
+  maths: Int
+  ownerId: Int
+}
+
+input CreateOwnerInput {
+  Name: String!
+}
+
+input UpdateOwnerInput {
+  Name: String
+  id: Int!
+}
